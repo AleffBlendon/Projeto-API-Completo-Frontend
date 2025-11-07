@@ -1,58 +1,30 @@
-CREATE DATABASE db_estoque_veiculos;
-
+CREATE DATABASE IF NOT EXISTS db_estoque_veiculos;
 USE db_estoque_veiculos;
 
-CREATE TABLE tbl_marcas (
-    id INT NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(45) NOT NULL,
-    PRIMARY KEY (id)
-);
 
-CREATE TABLE tbl_modelos (
-    id INT NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(45) NOT NULL,
-    id_marca INT NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_marca) REFERENCES tbl_marcas(id)
-);
+DROP TABLE IF EXISTS tbl_veiculos;
 
 CREATE TABLE tbl_veiculos (
     id INT NOT NULL AUTO_INCREMENT,
-    cor VARCHAR(20),
+    cor VARCHAR(50),
     ano INT,
     preco DECIMAL(10,2),
     quilometragem INT,
     status VARCHAR(20),
-    id_modelo INT NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_modelo) REFERENCES tbl_modelos(id)
+    foto VARCHAR(300),
+    marca VARCHAR(100),
+    modelo VARCHAR(100),
+    PRIMARY KEY (id)
 );
 
-INSERT INTO tbl_marcas (nome) VALUES
-('Fiat'),
-('Volkswagen'),
-('Chevrolet'),
-('Toyota'),
-('Honda');
 
-INSERT INTO tbl_modelos (nome, id_marca) VALUES
-('Uno', 1),
-('Argo', 1),
-('Gol', 2),
-('Onix', 3),
-('Corolla', 4),
-('Civic', 5);
+INSERT INTO tbl_veiculos (cor, ano, preco, quilometragem, status, foto, marca, modelo) VALUES
+('Preto', 2015, 35000, 60000, 'disponivel', 'https://cdn.salaodocarro.com.br/_upload/carros/2024/07/05/fiat-punto-2015-preto-352027-0.jpg', 'Fiat', 'Punto'),
+('Branco', 2018, 45000, 40000, 'vendido', 'https://s2-autoesporte.glbimg.com/kARbdCujMth-aj6Zm_Irq_UGPjo=/0x0:620x413/600x0/smart/filters:gifv():strip_icc()/i.s3.glbimg.com/v1/AUTH_cf9d035bf26b4646b105bd958f32089d/internal_photos/bs/2020/W/i/MNI843QdqnRBCfBVmUPg/2014-07-25-novo-ford-ka-2.jpg', 'Ford', 'Ka'),
+('Prata', 2020, 55000, 30000, 'disponivel', 'https://http2.mlstatic.com/D_NQ_NP_628517-MLB88531150710_072025-O-chevrolet-onix-10-turbo-aut-5p.webp', 'Chevrolet', 'Onix'),
+('Vermelho', 2019, 70000, 20000, 'disponivel', 'https://img.olx.com.br/thumbs700x500/69/691517585863435.webp', 'Volkswagen', 'Gol'),
+('Cinza', 2022, 130000, 5000, 'disponivel', 'https://s3.ecompletocarros.dev/images/lojas/125/veiculos/133737/veiculoInfoVeiculoImagesMobile/vehicle_image_1676920654_06850b859953a4d9282adc177eb502a5.jpeg', 'Honda', 'Civic'),
+('Azul', 2021, 125000, 8000, 'vendido', 'https://image.webmotors.com.br/_fotos/anunciousados/gigante/2025/202511/20251105/hyundai-hb20-1.0-tgdi-flex-platinum-automatico-wmimagem17275459166.jpg', 'Hyundai', 'HB20');
 
-INSERT INTO tbl_veiculos (cor, ano, preco, quilometragem, status, id_modelo) VALUES
-('Preto', 2015, 35000.00, 60000, 'disponivel', 1),
-('Branco', 2018, 45000.00, 40000, 'vendido', 2),
-('Prata', 2020, 55000.00, 30000, 'disponivel', 3),
-('Vermelho', 2019, 70000.00, 20000, 'disponivel', 4),
-('Cinza', 2022, 130000.00, 5000, 'disponivel', 5),
-('Azul', 2021, 125000.00, 8000, 'vendido', 6);
 
-SELECT v.id, m.nome AS modelo, ma.nome AS marca, v.ano, v.cor, v.preco, v.status
-FROM tbl_veiculos v
-JOIN tbl_modelos m ON v.id_modelo = m.id
-JOIN tbl_marcas ma ON m.id_marca = ma.id;
-
+SELECT * FROM tbl_veiculos;

@@ -13,11 +13,14 @@ public class Veiculo {
     private String marca;
     private String modelo;
     private String cor;
-    private int ano;
-    private double preco;
-    private int quilometragem;
-    private String status; // Exemplo: "disponivel", "vendido"
-    private String foto;   // URL ou caminho da imagem
+    private Integer ano;
+    private Double preco;
+    private Integer quilometragem;
+    private String status;
+    private String foto;
+
+    // Getters e Setters
+
 
     public int getId() {
         return id;
@@ -51,27 +54,27 @@ public class Veiculo {
         this.cor = cor;
     }
 
-    public int getAno() {
+    public Integer getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(Integer ano) {
         this.ano = ano;
     }
 
-    public double getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 
-    public int getQuilometragem() {
+    public Integer getQuilometragem() {
         return quilometragem;
     }
 
-    public void setQuilometragem(int quilometragem) {
+    public void setQuilometragem(Integer quilometragem) {
         this.quilometragem = quilometragem;
     }
 

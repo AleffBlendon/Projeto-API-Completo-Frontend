@@ -13,18 +13,40 @@ public class VeiculoService {
     @Autowired
     private VeiculoRepository veiculoRepository;
 
-    // método para listar veículos
+    // === LISTAR VEÍCULOS ===
     public List<Veiculo> listarVeiculos() {
         return veiculoRepository.findAll();
     }
 
-    // método para salvar novo veículo
+    // === SALVAR NOVO VEÍCULO ===
     public Veiculo salvarVeiculo(Veiculo veiculo) {
         return veiculoRepository.save(veiculo);
     }
 
-    // método para deletar veículo
+    // === DELETAR VEÍCULO ===
     public void deletarVeiculo(int id) {
         veiculoRepository.deleteById(id);
+    }
+
+    // === FILTRAR VEÍCULOS ===
+    public List<Veiculo> filtrarVeiculos(String marca, String modelo, Integer ano, Double preco, String status) {
+        return veiculoRepository.findByFiltros(marca, modelo, ano, preco, status);
+    }
+
+    // === ATUALIZAR VEÍCULO ===
+    public Veiculo atualizarVeiculo(int id, Veiculo veiculoAtualizado) {
+        Veiculo veiculo = veiculoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Veículo não encontrado"));
+
+        if (veiculoAtualizado.getPreco() != null && veiculoAtualizado.getPreco() > 0)
+            veiculo.setPreco(veiculoAtualizado.getPreco());
+
+        if (veiculoAtualizado.getQuilometragem() != null && veiculoAtualizado.getQuilometragem() > 0)
+            veiculo.setQuilometragem(veiculoAtualizado.getQuilometragem());
+
+        if (veiculoAtualizado.getStatus() != null && !veiculoAtualizado.getStatus().isBlank())
+            veiculo.setStatus(veiculoAtualizado.getStatus());
+
+        return veiculoRepository.save(veiculo);
     }
 }
