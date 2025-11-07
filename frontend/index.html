@@ -12,6 +12,7 @@
   </header>
 
   <main>
+    <!-- === CADASTRO === -->
     <section id="cadastro">
       <h2>Cadastrar Novo Veículo</h2>
       <form id="formVeiculo">
@@ -30,6 +31,25 @@
       </form>
     </section>
 
+    <!-- === FILTROS === -->
+    <section id="filtros">
+      <h2>Filtrar Veículos</h2>
+      <div id="filterForm">
+        <input type="text" id="filtroMarca" placeholder="Marca">
+        <input type="text" id="filtroModelo" placeholder="Modelo">
+        <input type="number" id="filtroAno" placeholder="Ano">
+        <input type="number" id="filtroPreco" placeholder="Preço máximo">
+        <select id="filtroStatus">
+          <option value="">Todos</option>
+          <option value="disponivel">Disponível</option>
+          <option value="vendido">Vendido</option>
+        </select>
+        <button id="btnFiltrar">Filtrar</button>
+        <button id="btnLimpar">Limpar</button>
+      </div>
+    </section>
+
+    <!-- === LISTAGEM === -->
     <section id="lista">
       <h2>Estoque de Veículos</h2>
       <div id="cardsContainer" class="cards-container"></div>
@@ -40,6 +60,6 @@
     <p>Trabalho de Programação Orientada a Objetos - Fecaf © 2025</p>
   </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
