@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Estoque de Veículos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🚗 Gestão de Estoque de Veículos</h1>
+  </header>
+
+  <main>
+    <section id="cadastro">
+      <h2>Cadastrar Novo Veículo</h2>
+      <form id="formVeiculo">
+        <input type="text" id="marca" placeholder="Marca" required>
+        <input type="text" id="modelo" placeholder="Modelo" required>
+        <input type="text" id="cor" placeholder="Cor" required>
+        <input type="number" id="ano" placeholder="Ano" required>
+        <input type="number" id="quilometragem" placeholder="Quilometragem (km)" required>
+        <input type="number" id="preco" placeholder="Preço (R$)" step="0.01" required>
+        <select id="status" required>
+          <option value="disponivel">Disponível</option>
+          <option value="vendido">Vendido</option>
+        </select>
+        <input type="text" id="foto" placeholder="URL da Foto (opcional)">
+        <button type="submit">Cadastrar Veículo</button>
+      </form>
+    </section>
+
+    <section id="lista">
+      <h2>Estoque de Veículos</h2>
+      <div id="cardsContainer" class="cards-container"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Trabalho de Programação Orientada a Objetos - Fecaf © 2025</p>
+  </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
